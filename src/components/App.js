@@ -5,7 +5,7 @@ import Order from './Order';
 import Inventory from './Inventory';
 import sampleFishes from '../sample-fishes';
 import Fish from './Fish';
-//import base from '../base';
+import base from '../base';
 
 class App extends React.Component {
   state = {
@@ -23,10 +23,10 @@ class App extends React.Component {
     if (localStorageRef) {
       this.setState({order:JSON.parse(localStorageRef)});
     }
-    // this.ref = base.syncState(`${params.storeId}/fishes`, {
-    //   context:this,
-    //   state: 'fishes'
-    // });
+    this.ref = base.syncState(`${params.storeId}/fishes`, {
+      context:this,
+      state: 'fishes'
+    });
   }
 
   componentDidUpdate() {
@@ -34,7 +34,7 @@ class App extends React.Component {
   }
 
   componentWillUnmount() {
-    //base.removeBinding(this.ref);
+    base.removeBinding(this.ref);
  }
 
   addFish = (fish) => {
@@ -103,6 +103,7 @@ class App extends React.Component {
           updateFish={this.updateFish}
           deleteFish={this.deleteFish}
           fishes={this.state.fishes}
+          storeId={this.props.match.params.storeId}
         />
       </div>
     )

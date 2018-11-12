@@ -1,8 +1,6 @@
 import Rebase from 're-base';
 import * as firebase from 'firebase';
 
-console.log(process.env.REACT_APP_apiKey)
-
 const firebaseApp = firebase.initializeApp({
   apiKey: `${process.env.REACT_APP_apiKey}`,
   authDomain: "catch-of-the-day-chris-w.firebaseapp.com",
